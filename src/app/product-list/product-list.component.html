@@ -1,0 +1,34 @@
+<h2>Products</h2>
+<h3>balls</h3>
+<!-- i put this here lol-->
+
+<!-- ngFor: a for loop, the string let/var item(made up name) of items(exists)-->
+<div *ngFor="let product of products">
+  <!--  Everything in here creates content for the current item in loop-->
+  <h3>
+    <!--  clickable link to nowhere, title is text on hover-->
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+      <!-- dot operator, i guess brackets.-->
+    </a>
+  </h3>
+
+  <!-- ngIf: an if statement. Can apparently check if an element has an attribute and it doesn't explode if null. -->
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+    <!-- brackets {{}} take dot operator and display as text. cool.-->
+  </p>
+
+  <!--It's surprising how much of this shit is just HTML.-->
+  <button type="button" (click)="share()">Share</button>
+
+  <!-- This is a child of the product componenet, used here in product list. -->
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
